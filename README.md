@@ -1,4 +1,14 @@
-# NYC Resistor Workshop: Build Your Own IoT Love Messengers!
+# Rachel's Fork 
+I attended the workshop and want to keep playing with the code and messangers.
+
+I will describe modificaitons here once implemented.
+
+Planned changes:
+1. move password from plain text into a secrets file. This will happen before any other changes so I can share my work without sharing any passwords
+2. Add either a schedule or the ability to turn the messanges on and off 
+
+# Upstream read me: 
+## NYC Resistor Workshop: Build Your Own IoT Love Messengers!
 **Saturday, Dec 21, 2024** 
 <br>
 by Julia Daser and Pepi Ng
@@ -6,7 +16,7 @@ by Julia Daser and Pepi Ng
 
 
 
-## This Github Page Contains
+### This Github Page Contains
 1. [**3D models**](https://github.com/pepzicles/NYCResistor_LoveMessengers/tree/main/3D%20Models) of the box encasing, the floor, and the hearts for 3D-printing
 2. The [**Code**](https://github.com/pepzicles/NYCResistor_LoveMessengers/blob/main/code.ino) for the ESP32 Microcontrollers
 3. The [**Class-Slides**](https://docs.google.com/presentation/d/1tKyRhq-H0f7qh0r20IBgMoWx7r3AGBdcS3LCC1Dzuw8/edit?usp=sharing)
@@ -15,7 +25,7 @@ by Julia Daser and Pepi Ng
 
 <br>
 
-## You attended our  workshop and want to use the Love Messengers at home?
+### You attended our  workshop and want to use the Love Messengers at home?
 To use the *Love Messengers* at home, you need to re-upload the code with your own WiFi name and Password. 
 Follow our PDF-instructions if you need a reminder on how to do so: [PDF Instructions](ADD URL HERE)
 <br>
@@ -24,7 +34,7 @@ You can keep using the same Database we created in the workshop. (If you want to
 
 <br>
 
-## Contact us
+### Contact us
 We hope you guys had tons of fun building  DIY Love Messengers 💙🧡  <br>
 If you run into any issues, please reach out to us!! We would love to help
 <br>
@@ -34,7 +44,7 @@ If you run into any issues, please reach out to us!! We would love to help
 
 <br>
 
-## About 
+### About 
 Our DIY Love Messengers are the perfect gift for your friends/ partners, especially long-distance ones! When the button of one love messenger is pressed, both of them will light up - no matter HOW FAR AWAY the two messengers are! We will be using all the files, code and 3D models from this repository.
 <br>
 <br>
@@ -42,7 +52,7 @@ Our DIY Love Messengers are the perfect gift for your friends/ partners, especia
 <br>
 <br>
 
-## Materials needed to build two Love Messengers
+### Materials needed to build two Love Messengers
 1. 4x 3D-printed translucent heart OR star **halves** (see '3D models' folder)
 2. 2x 3D-printed box encasings (see '3D models' folder)
 3. 2x 3D-printed box floors (see '3D models' folder)
@@ -55,13 +65,13 @@ Our DIY Love Messengers are the perfect gift for your friends/ partners, especia
 <br>   
 <br>
 
-## Wire Diagram: 
+### Wire Diagram: 
 <img src="Media/Wirediagram.png" alt="demo" width="600"/>
 
 <br>   
 <br>
 
-## Other Tools/ Equipment: 
+### Other Tools/ Equipment: 
 1. Pliers
 2. Wire Stripper
 3. Small Screwdrivers
