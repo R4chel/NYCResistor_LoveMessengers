@@ -3,14 +3,11 @@
 #include <Firebase_ESP_Client.h>
 #include "addons/TokenHelper.h"
 #include "addons/RTDBHelper.h"
+#include "arduino_secrets.h"
 
-// Wi-Fi credentials
-#define WIFI_SSID "NYCR24"
-#define WIFI_PASSWORD "clubmate"
 
-// Firebase credentials
-#define API_KEY "insert API Key here"
-#define DATABASE_URL "insert API Url here"
+
+
 
 // LED & button connections to the ESP
 const int ledPin = 4;
@@ -52,7 +49,7 @@ void loop() {
 }
 
 void connectWiFi() {
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  WiFi.begin(SECRET_WIFI_SSID, SECRET_WIFI_PASSWORD);
   Serial.print("Connecting to Wi-Fi");
   while (WiFi.status() != WL_CONNECTED) {
     Serial.println("Connecting to Wifi...");
@@ -66,8 +63,8 @@ void connectWiFi() {
 }
 
 void connectFirebase() {
-  config.api_key = API_KEY;
-  config.database_url = DATABASE_URL;
+  config.api_key = SECRET_API_KEY;
+  config.database_url = SECRET_DATABASE_URL;
 
   if (Firebase.signUp(&config, &auth, "", "")) {
     Serial.println("Firebase successful");
