@@ -10,7 +10,9 @@
 const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = -5*60*60; // EST 
 const int   daylightOffset_sec = 3600;
-
+// sleep schedule
+const int   wakeHour = 7;
+const int   sleepHour = 22;
 
 // LED & button connections to the ESP
 const int ledPin = 4;
@@ -26,6 +28,7 @@ FirebaseConfig config;
 unsigned long lastFirebaseUpdate = 0;
 int count = 0;
 bool signupOK = false;
+bool awake = true;
 
 void setup() {
   Serial.begin(115200);
@@ -37,12 +40,12 @@ void setup() {
   connectWiFi();
   connectFirebase();
   configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
-  printLocalTime();
   digitalWrite(buttonLedPin, HIGH);
 }
 
 void loop() {
-  if (Firebase.ready() && signupOK && (millis() - lastFirebaseUpdate > 1000)) {  // timer
+  
+  if (Firebase.ready() && signupOK  && (millis() - lastFirebaseUpdate > 1000)) {  // timer
     lastFirebaseUpdate = millis();
 
     buttonState = digitalRead(buttonPin); //checking if our button is pressed
@@ -118,30 +121,14 @@ void printLocalTime(){
     Serial.println("Failed to obtain time");
     return;
   }
-  Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S");
-  Serial.print("Day of week: ");
-  Serial.println(&timeinfo, "%A");
-  Serial.print("Month: ");
-  Serial.println(&timeinfo, "%B");
-  Serial.print("Day of Month: ");
-  Serial.println(&timeinfo, "%d");
-  Serial.print("Year: ");
-  Serial.println(&timeinfo, "%Y");
-  Serial.print("Hour: ");
-  Serial.println(&timeinfo, "%H");
-  Serial.print("Hour (12 hour format): ");
-  Serial.println(&timeinfo, "%I");
-  Serial.print("Minute: ");
-  Serial.println(&timeinfo, "%M");
-  Serial.print("Second: ");
-  Serial.println(&timeinfo, "%S");
-
-  Serial.println("Time variables");
-  char timeHour[3];
-  strftime(timeHour,3, "%H", &timeinfo);
+  
+  int timeHour = timeinfo.tm_hour;
+  
   Serial.println(timeHour);
-  char timeWeekDay[10];
-  strftime(timeWeekDay,10, "%A", &timeinfo);
-  Serial.println(timeWeekDay);
-  Serial.println();
+  if(timeHour >= wakeHour && timeHour <= sleepHour){
+    Serial.println("awake");
+  }
+  else{
+    Serial.println("asleep");
+  }
 }
