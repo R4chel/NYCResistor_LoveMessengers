@@ -44,8 +44,8 @@ void setup() {
 }
 
 void loop() {
-  
-  if (Firebase.ready() && signupOK  && (millis() - lastFirebaseUpdate > 1000)) {  // timer
+  checkTime();
+  if (awake && Firebase.ready() && signupOK  && (millis() - lastFirebaseUpdate > 500)) {  // timer
     lastFirebaseUpdate = millis();
 
     buttonState = digitalRead(buttonPin); //checking if our button is pressed
@@ -53,7 +53,6 @@ void loop() {
     downloadData();
     manageLED(buttonState, firebaseData); // turning the LED on or off
 
-    printLocalTime();
   }
   delay(5);
 }
@@ -115,7 +114,7 @@ void manageLED(int buttonState, int firebaseData) {
   }
 }
 
-void printLocalTime(){
+void checkTime(){
   struct tm timeinfo;
   if(!getLocalTime(&timeinfo)){
     Serial.println("Failed to obtain time");
@@ -123,12 +122,6 @@ void printLocalTime(){
   }
   
   int timeHour = timeinfo.tm_hour;
-  
-  Serial.println(timeHour);
-  if(timeHour >= wakeHour && timeHour <= sleepHour){
-    Serial.println("awake");
-  }
-  else{
-    Serial.println("asleep");
-  }
+  awake = timeHour >= wakeHour && timeHour <= sleepHour;
+  digitalWrite(buttonLedPin, awake);
 }
