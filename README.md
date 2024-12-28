@@ -3,9 +3,15 @@ I attended the workshop and want to keep playing with the code and messangers.
 
 I will describe modificaitons here once implemented.
 
-Planned changes:
+Changes
 1. move password from plain text into a secrets file. This will happen before any other changes so I can share my work without sharing any passwords
-2. Add either a schedule or the ability to turn the messanges on and off 
+   In order to avoid committing my actual secrets file I have run locally
+   ```
+        git update-index --assume-unchanged --skip-worktree code/arduino_secrets.h
+   ```
+   
+Planned Changes
+1. Add either a schedule or the ability to turn the messanges on and off 
 
 # Upstream read me: 
 ## NYC Resistor Workshop: Build Your Own IoT Love Messengers!
